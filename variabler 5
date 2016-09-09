@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace variabler5
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Cirkelns radie: ");
+            string inmatat;
+            inmatat = Console.ReadLine();
+            int mittHeltal = int.Parse(inmatat);
+            double pi = 3.14159;
+            Console.WriteLine("Area: " + (mittHeltal * mittHeltal * pi));
+            Console.WriteLine("Omkrets: " + (mittHeltal * 2 * pi));
+            
+            Console.ReadLine();
+        }
+
+    }
+}
