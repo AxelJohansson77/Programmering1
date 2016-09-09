@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace variabler4
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Mata in rader i celsius: ");
+            string inmatat;
+            double num = 1.8;
+            int num2 = 32;
+            inmatat = Console.ReadLine();
+            double grader = double.Parse(inmatat);
+            Console.Write("Det blir " + (grader * num + num2));
+            Console.WriteLine(" grader Fahrenheit");
+            
+            Console.ReadLine();
+        }
+    }
+}
