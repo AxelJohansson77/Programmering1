@@ -1,0 +1,26 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace variabler1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Heltal 1: ");
+            string inmatat;
+            inmatat = Console.ReadLine();
+            int mittHeltal = int.Parse(inmatat);
+            Console.WriteLine("Heltal 2: ");
+            inmatat = Console.ReadLine();
+            int mittHeltal2 = int.Parse(inmatat);
+            Console.WriteLine("Summan: " + (mittHeltal + mittHeltal2));
+            Console.WriteLine("Produkten: " + (mittHeltal * mittHeltal2));
+            Console.WriteLine("Divisionen: " + (mittHeltal / mittHeltal2));
+            Console.ReadLine();
+        }
+    }
+}
