@@ -1,0 +1,38 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace if_satser_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Mata in tal 1: ");
+            string inmatat = Console.ReadLine();
+            decimal x = decimal.Parse(inmatat);
+            Console.WriteLine("Mata in tal 2: ");
+            string inmatat2 = Console.ReadLine();
+            decimal y = decimal.Parse(inmatat2);
+
+            if (x > y)
+            {
+                Console.WriteLine("Tal 1 är störst");
+            }
+            if (y > x)
+            {
+                Console.WriteLine("Tal 2 är störst");
+            }
+            if (y == x)
+            {
+                Console.WriteLine("Talen är lika stora");
+    
+            }
+                Console.ReadLine();
+            }
+        
+        }
+    }
+
