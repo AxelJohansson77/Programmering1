@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace if_satser_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Skriv in monsterdjup: ");
+            string inmatat = Console.ReadLine();
+            double x = double.Parse(inmatat);
+
+            if (x >= 1.6)
+            {
+                Console.WriteLine("Lagligt däck!");
+            }
+            else
+            {
+                Console.WriteLine("Olagligt däck!");
+            }
+        }
+    }
+}
