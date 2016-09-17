@@ -10,6 +10,7 @@ namespace variabler1
     {
         static void Main(string[] args)
         {
+            //Övning 1
             Console.WriteLine("Heltal 1: ");
             string inmatat;
             inmatat = Console.ReadLine();
@@ -20,7 +21,56 @@ namespace variabler1
             Console.WriteLine("Summan: " + (mittHeltal + mittHeltal2));
             Console.WriteLine("Produkten: " + (mittHeltal * mittHeltal2));
             Console.WriteLine("Divisionen: " + (mittHeltal / mittHeltal2));
-            Console.ReadLine();
+            {
+                //Övning 2
+
+                Console.WriteLine("Mata in ditt förnamn: ");
+                string inmatat2;
+                inmatat2 = Console.ReadLine();
+                string minstring1 = (inmatat2);
+                Console.WriteLine("Mata in ditt efternamn: ");
+                inmatat2 = Console.ReadLine();
+                string minstring2 = (inmatat2);
+                Console.WriteLine("Hej: " + (minstring1 + " " + minstring2));
+
+            }
+            {
+                //Övning 3
+
+                Console.WriteLine("Mata in grader i celsius: ");
+                string inmatat3;
+                double num = 1.8;
+                int num2 = 32;
+                inmatat3 = Console.ReadLine();
+                double grader = double.Parse(inmatat3);
+                Console.Write("Det blir " + (grader * num + num2));
+                Console.WriteLine(" grader Fahrenheit");
+            }
+            {
+                //Övning 4
+
+                Console.Write("Mata in grader i celsius: ");
+                string inmatat4;
+                double num = 1.8;
+                int num2 = 32;
+                inmatat4 = Console.ReadLine();
+                double grader = double.Parse(inmatat4);
+                Console.Write("Det blir " + (grader * num + num2));
+                Console.WriteLine(" grader Fahrenheit");
+            }
+            {
+                //Övning 5'
+
+                Console.Write("Cirkelns radie: ");
+                string inmatat5;
+                inmatat5 = Console.ReadLine();
+                int mittHeltal3 = int.Parse(inmatat5);
+                double pi = 3.14159;
+                Console.WriteLine("Area: " + (mittHeltal3 * mittHeltal3 * pi));
+                Console.WriteLine("Omkrets: " + (mittHeltal * 2 * pi));
+            }
+
         }
     }
 }
+
