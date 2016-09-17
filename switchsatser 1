@@ -14,6 +14,7 @@ namespace switch_satser_1
     {
         static void Main(string[] args)
         {
+            //Övning 1
             Console.WriteLine("Skriv ett heltal: ");
             int tal = int.Parse(Console.ReadLine());
 
@@ -24,7 +25,22 @@ namespace switch_satser_1
                 case 3:  Console.WriteLine("Tre"); break;
                 case 4:  Console.WriteLine("Fyra"); break;
                 default: Console.WriteLine("Ogiltiga alternativ!"); break;
+          
             }
+
+            //Övning 2
+            Console.WriteLine("Skriv en bokstav: ");
+                string bokstav;
+                bokstav = Console.ReadLine();
+
+                switch (bokstav)
+                {
+                    case "n": Console.WriteLine("You walk north"); break;
+                    case "s": Console.WriteLine("You travel south"); break;
+                    case "w": Console.WriteLine("You stroll west"); break;
+                    case "e": Console.WriteLine("You wander east"); break;
+                    default: Console.WriteLine("I don't understand!"); break;
+                }
         }
     }
 }
