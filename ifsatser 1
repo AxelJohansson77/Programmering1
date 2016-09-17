@@ -10,6 +10,7 @@ namespace if_satser_1
     {
         static void Main(string[] args)
         {
+            //Övning 1
             Console.WriteLine("Skriv in monsterdjup: ");
             string inmatat = Console.ReadLine();
             double x = double.Parse(inmatat);
@@ -22,6 +23,72 @@ namespace if_satser_1
             {
                 Console.WriteLine("Olagligt däck!");
             }
+            
+                //Övning 2
+
+                Console.WriteLine("Mata in ålder: ");
+                string inmatat2 = Console.ReadLine();
+                int y = int.Parse(inmatat2);
+
+                if (0 < y && y < 13)
+                {
+                    Console.WriteLine("Färg: Vit");
+                }
+                if (12 < y && y < 19)
+                {
+                    Console.WriteLine("Färg: Grön");
+                }
+                if (18 < y && y < 26)
+                {
+                    Console.WriteLine("Färg: Röd");
+                }
+                if (25 < y && y < 100)
+                {
+                    Console.WriteLine("Färg: Blå");
+                }
+                if (y > 99)
+                {
+                    Console.WriteLine("Ogiltig färg");
+                }
+
+            
+                //Övning 3
+                Console.WriteLine("Mata in tal 1: ");
+                string inmatat3 = Console.ReadLine();
+                decimal z = decimal.Parse(inmatat3);
+                Console.WriteLine("Mata in tal 2: ");
+                string inmatat4 = Console.ReadLine();
+                decimal i = decimal.Parse(inmatat4);
+
+                if (z > i)
+                {
+                    Console.WriteLine("Tal 1 är störst");
+                }
+                if (i > z)
+                {
+                    Console.WriteLine("Tal 2 är störst");
+                }
+                if (z == i)
+                {
+                    Console.WriteLine("Talen är lika stora");
+                }
+            
+                //Övning 4
+
+                Console.WriteLine("Mata in ett tal: ");
+                string inmatat5 = Console.ReadLine();
+                int u = int.Parse(inmatat5);
+
+                if ((u % 7) == 0)
+                {
+                    Console.WriteLine("Talet är jämt delbart med sju! ");
+                }
+                if ((u % 7) != 0)
+                {
+                    Console.WriteLine("Talet är inte jämt delbart med sju. Resten blir: " + (u % 7));
+
+
+                }
         }
     }
 }
