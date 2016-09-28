@@ -26,17 +26,17 @@ namespace forsatsen_1
 
             for (int q = 20; q >= 0; q = q - 1)
             {
-                Console.WriteLine(a);
+                Console.WriteLine(q);
 
             }
-                            //Övning 3
-                            for (int p = 0; p <= 50; p = p + 2)
-                            {
-                                Console.WriteLine(a);
+            //Övning 3
+            for (int p = 0; p <= 50; p = p + 2)
+            {
+                Console.WriteLine(p);
 
-                            }  
-                                    
-                                     
+            }
+
+
             //Övning 1
             Console.WriteLine("Mata in start: ");
             string inmatat;
@@ -52,41 +52,118 @@ namespace forsatsen_1
 
             for (int z = start; z <= stop; z = z + steg)
             {
-                Console.WriteLine(a);
+                Console.WriteLine(z);
             }
-            
+
             //Övning 3
             Console.WriteLine("Mata in ett heltal: ");
-            string inmatat2;
-            inmatat2 = Console.ReadLine();
-            int tal2 = int.Parse(inmatat2);
-            int y = 0;               
+            int startvalue = int.Parse(Console.ReadLine());
+            int sum = 0;
 
-            for (int w = tal2; w>0; a--) 
-            
+            for (int i = startvalue; i > 0; i--)
+                sum += i;
 
-            y = y + a;
-
-
-            
-        Console.WriteLine(y);
-        
+            Console.WriteLine(sum);
+            Console.WriteLine();
 
             //Övning 4
-            Console.WriteLine("Mata in ett heltal: ");
-            string inmatat3;
-            inmatat3 = Console.ReadLine();
-            int tal = int.Parse(inmatat3);
+            Console.WriteLine("Ange ett heltal: ");
+            int tal = int.Parse(Console.ReadLine());
+            bool delare = false;
 
-            if ((tal % 7 && tal % 3) == 0)
+            for (int i = 1; i < tal; i++)
             {
-               for(int a= tal, tal ) 
+                if (i % 3 == 0 && i % 7 == 0)
+                {
+                    Console.WriteLine("Talet" + i + "är jämt delart med både 3 och 7");
+                    delare = true;
+                }
+            }
+            if (!delare)
+                Console.WriteLine("Hittade inga tal...");
 
+            Console.ReadKey();
 
+            //Övning5
+            Console.WriteLine("Mata in ett heltal: ");
+            int följd = int.Parse(Console.ReadLine());
+            int följd_0 = 0;
+            int följd_1 = 1;
+            int följd_n;
+
+            if (följd == 0)
+                Console.WriteLine("Fibonaccitalen blir: 0");
+            else
+            {
+                Console.Write("Fibonaccitalen blir: 1  ");
+                for (int i = 1; i < följd; i++)
+                {
+                    följd_n = följd_0 + följd_1;
+                    följd_0 = följd_1;
+                    följd_1 = följd_n;
+                    Console.Write(följd_n + "  ");
+                }
+            }
+            Console.WriteLine();
+            Console.ReadKey();
+
+            //Övning6
+            Console.WriteLine("Ange ett tal");
+            int rot = int.Parse(Console.ReadLine());
+
+            for (double i = 0; i < rot; i += 0.1)
+            {
+                if ((rot - i * i * i) < 0.1)
+                {
+                    Console.WriteLine(i);
+                    break;
+                }
             }
 
+            Console.ReadKey();
+
+            //Övning7
+            Console.WriteLine("Mata in ett heltal som ska undersökas: ");
+            int prim = int.Parse(Console.ReadLine());
+            bool flag = false;
+
+            for (int i = 3; i < prim; i++)
+            {
+                if (prim % i == 0)
+                {
+                    Console.WriteLine("Talet är INTE ett primtal");
+                    flag = true;
+                    break;
+                }
+            }
+
+            if (!flag)
+                Console.WriteLine("Talet är ett primtal");
+
+            Console.ReadKey();
 
 
-        }
+            //Övning8 
+            Console.WriteLine("Mata in ett heltal som ska undersökas: ");
+            int prim1 = int.Parse(Console.ReadLine());
+            bool flag2 = false;
+
+            for (int i = 2; i <= prim1; i++)
+            {
+                if (prim1 % i == 0)
+                {
+                    Console.WriteLine(i + " är en primtalsfaktor");
+                    flag2 = true;
+                    prim1 = prim / i;
+                    i = 2;
+                }
+            }
+
+            if (!flag2)
+                Console.WriteLine(prim + " är ett primtal");
+
+            Console.ReadKey();
+
         }
     }
+}
