@@ -1,0 +1,84 @@
+/*Strängar övningar
+ * Axel Johansson den 30 september 2016
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace forsatsen_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+
+
+        {
+            //Övning 1
+
+            
+                Console.WriteLine("\u0056\u00E4\u0157\u006D\u0064\u00F6");
+                Console.WriteLine("\u0047\u0059\u004D\u004E\u0041\u0053\u0049\u0055\u004D");
+            
+            //Övning 2
+            
+                Console.WriteLine("\"Hello World\"");
+            
+            //Övning 3 a
+            
+                string hej = "Hello world";
+                string inmatat = hej.ToUpper();
+                Console.WriteLine(inmatat);
+
+            
+            //Övning 3 b
+            
+                string hej2 = "Hello World";
+                string inmatat2 = hej2.ToLower();
+                Console.WriteLine(inmatat2);
+            
+            //Övning 4
+            
+                string hej3 = "Hello World";
+                Console.WriteLine(hej3.Length);
+
+            
+            //Övning 5
+            
+                Console.WriteLine("Skriv in text: ");
+                string inmatat4 = Console.ReadLine();
+                char[] textArray = inmatat.ToCharArray();
+                Array.Reverse(textArray);
+                Console.WriteLine(textArray);
+            
+            //Övning 6
+            
+                string elefant = "{0} elefant{1} balanserade på en liten spindelrtåd.\n"
+                    + "det tyckte {2} var så intressant, .\n"
+                    + "så {2} gick och hämtade en annan elefant.\n";
+
+                string sång = string.Format(elefant + "En", "", "han");
+                Console.WriteLine(sång);
+
+            for (int a = 1; a < 4; a++)
+            {
+                sång = string.Format(elefant, ++a, "er", "dem");
+                Console.WriteLine(sång);
+            }
+
+                if (a > 4)
+                {
+                    Console.WriteLine(sång + "men nu fanns det inte någon mera elefant.");
+                }
+
+            
+
+
+
+
+        }
+            }
+
+        }
+
