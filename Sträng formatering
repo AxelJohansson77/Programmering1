@@ -1,0 +1,61 @@
+/*WhileSatse övningar Csharpskolan
+ * Axel Johansson den 23 september 2016
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sträng_formatering
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //övning1
+            DateTime dt = new DateTime(2016, 10, 7);
+            Console.WriteLine(dt.ToString("d"));
+
+            {
+                //Övning2
+                double svar = 4 * 4 * Math.PI;
+                Console.WriteLine(svar.ToString("F4"));
+
+            }
+            //Övning3
+            {
+                int tal = 1000000000;
+                Console.WriteLine("{0:0,0.}", tal);
+            }
+            {
+                //Övning4
+                double value = 123.00;
+                Console.WriteLine("Det blir " + value + " kr och 00 öre");
+
+            }
+            {
+                //Övning5
+                Console.WriteLine("Skriv in ditt peronnummer utan mellanslag och bindestreck: ");
+
+                string person = Console.ReadLine();
+                decimal nummer = decimal.Parse(person);
+                Console.WriteLine("{0:#### ## ## - ####}", nummer);
+            }
+
+            //Övning6
+
+            const string format = "{0,-10} | {1,-10} | {2,-10} | {3, -10} | {4, -10}";
+            Console.WriteLine("--------------------------Veckoschema-------------------------------");
+            Console.WriteLine(String.Format(format, "Måndag", "Tisdag", "Onsdag", "Torsdag", "Fredag"));
+            Console.WriteLine("--------------------------------------------------------------------");
+            Console.WriteLine(String.Format(format, "Matematik", "Matematik", "Idrott", "Engelska", "Programmering"));
+            Console.WriteLine(String.Format(format, "Fysik", "Teknik", "Svenska", "Fysik", "Webbprogrammering"));
+            Console.ReadLine();
+
+
+        }
+
+
+    }
+}
