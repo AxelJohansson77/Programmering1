@@ -1,0 +1,123 @@
+/*WhileSatse övningar Csharpskolan
+ * Axel Johansson den 23 september 2016
+ */
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace forsatsen_1
+{
+    class Program
+    {
+        static void Main(string[] args)
+
+
+        {
+            //Övning 1.1
+            /*
+            int n = 1;
+            while (n <= 100)
+            {
+                Console.WriteLine(n);
+                n++;
+            }
+
+            //Övning 1.2
+
+
+            string lösenord = "lösenord";
+            while (true)
+            {
+                Console.Write("Skriv in lösenord");
+                string inmatat = Console.ReadLine();
+
+                Console.WriteLine("Försök igen");
+
+
+                if (inmatat == lösenord)
+                {
+
+                    Console.WriteLine("Rätt lösenord");
+
+                }
+                //Övning 2.1
+                
+                int i = 1;
+                while (i <= 100)
+                {
+                    Console.WriteLine(i);
+                    i++;
+
+                    Console.ReadLine();
+
+                }
+                //Övning 2.2
+
+                int p = 10;
+                while (p >= 1)
+
+                {
+                    Console.WriteLine(i);
+                    i--;
+
+                    Console.ReadLine();
+                }
+                
+            //Övning 2.3
+
+            { 
+                while (true)
+
+                
+                    Console.WriteLine("Oändligt");
+                  
+                }
+            */
+            //övning 2.4
+
+            {
+                Random rnd = new Random();
+                int tal = rnd.Next(100);
+                int gissning = -1;
+                int nr = 0;
+
+                Console.WriteLine("Gissa på ett tal mellan 0-100");
+
+                while (gissning != tal)
+                {
+                    gissning = int.Parse(Console.ReadLine());
+                    nr++;
+                    if (gissning < tal)
+                        Console.WriteLine("Du gissade på ett för lågt tal, gissa igen");
+                    else if (gissning > tal)
+                        Console.WriteLine("Du gissade på ett för högt tal, gissa igen");
+                    else
+                        Console.WriteLine("Du gissade rätt, dvs: " + tal + " på " + nr + " försök");
+                }
+
+
+            }
+
+            //övning 2.5
+
+            int fib_0 = 0;
+            int fib_1 = 1;
+            int fib_n = 1;
+
+            while (fib_n < 1E6)
+            {
+                Console.Write(fib_n + "  ");
+                fib_n = fib_0 + fib_1;
+                fib_0 = fib_1;
+                fib_1 = fib_n;
+            }
+            Console.WriteLine();
+            Console.ReadKey();
+
+
+
+        }
+    }
+}
