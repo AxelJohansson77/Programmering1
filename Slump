@@ -1,0 +1,88 @@
+//2016-10-28 Axel Johansson Övninar slump
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace slump
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Övning 1
+
+            Random nummer = new Random();
+            int tio = 0;
+            int summa = 0;
+
+            
+                while (tio < 10)
+                {
+                    tio++;
+                    int num = nummer.Next(20);
+
+                    summa = summa + num;
+                
+                }
+
+                int medel = summa / 10;
+                Console.Write("Melvärdet är " + medel);
+
+            Console.WriteLine("\n");
+
+            //Övning 2
+
+            Random nummer2 = new Random();
+            int tjugo = 0;
+            int[] numbArray = new int[20];
+                      
+
+            while (tjugo < 20)
+            {
+                
+                numbArray[tjugo] = nummer2.Next(15, 30);
+                tjugo++;
+            }
+
+
+            Array.Sort(numbArray);
+
+            {
+                for (int x = 0; x < 20; x++)
+                {
+                    Console.Write(numbArray[x]);
+                    Console.Write((x == 9) ? " | " : " ");
+                }
+
+                Console.Write("Medianen är " + (numbArray[9] + numbArray[10]) / 2.0);
+
+                Console.WriteLine("\n");
+
+            }
+
+                //Övning 3
+
+                Random rnd = new Random();
+            int tal = rnd.Next(100);
+            int gissning = -1;
+            int nr = 0;
+
+            Console.WriteLine("Gissa på ett tal mellan 0-100");
+
+            while (gissning != tal)
+            {
+                gissning = int.Parse(Console.ReadLine());
+                nr++;
+                if (gissning < tal)
+                    Console.WriteLine("Du gissade på ett för lågt tal, gissa igen");
+                else if (gissning > tal)
+                    Console.WriteLine("Du gissade på ett för högt tal, gissa igen");
+                else
+                    Console.WriteLine("Du gissade rätt, dvs: " + tal + " på " + nr + " försök");
+            }
+
+        }
+    }
+}
