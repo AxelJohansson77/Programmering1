@@ -1,0 +1,75 @@
+//Axel Johansson 11/11 2016 Metoder övningar
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Metoder
+{
+    class Program
+    {
+        /*Övning 1
+        static double CelsiusTillFarenheit(double degree)
+        {
+         
+           return ((degree / 5.0) * 9 + 32);
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Mata in ett heltal: ");
+            string celcius;
+            celcius = Console.ReadLine();
+            double grader = double.Parse(celcius);
+            Console.WriteLine("Grader i fahrenheit är: " + CelsiusTillFarenheit(grader));
+            */
+
+
+        /*Övning 2
+
+        static double svar(double cirkel)
+    {
+
+          return (cirkel * cirkel * 3.14);
+    }
+    static double svar2(double cirkel)
+    {
+
+        return (cirkel * 2 * 3.14);
+
+    }
+        static void Main(string[] args)
+    {
+            Console.WriteLine("Mata in cirkelns radie: ");
+            string radie;
+            radie = Console.ReadLine();
+            double resultat = double.Parse(radie);
+            Console.WriteLine("Arean är: " + svar(resultat));
+        Console.WriteLine("Omkretsen är: " + svar2(resultat));
+        */
+
+        // Övning 3
+
+        static int KastaTärning(int antal)
+        {
+            for (int x = 0; x < antal; x++)
+            {
+                Random kör = new Random(1 - 6);
+            }
+
+            return antal;
+        }
+       
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Antal kast med tärning: ");
+            string kast;
+            kast = Console.ReadLine();
+            int resultat = int.Parse(kast);
+            Console.WriteLine("Resultat: " + KastaTärning(resultat));
+           
+
+        }
+        }
+
+}
