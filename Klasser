@@ -1,0 +1,78 @@
+//Axel Johansson 13/1 2017 Klasser Övningar från C-sharp skolan
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Klasser1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            /*Övning 1
+            bil person = new bil();
+
+            Console.Write("Ange bilens märke: ");
+            person.märke = Console.ReadLine();
+            Console.Write("Ange bilens modell: ");
+            person.modell = Console.ReadLine();
+            Console.Write("Ange bilens regestreringsnummer: ");
+            person.regnr = int.Parse(Console.ReadLine());
+            Console.Write("Ange antal dörrar till bilen: ");
+            person.dörrar = int.Parse(Console.ReadLine());
+            Console.Write("Ange antal växlar på bilen: ");
+            person.växlar = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(person.info);
+
+            
+            //Övning 2
+
+            namn person = new namn();
+
+            Console.Write("Ange ditt förnamn: ");
+            person.förnamn = Console.ReadLine();
+            Console.Write("Ange ditt efternamn: ");
+            person.efternamn = Console.ReadLine();
+
+            Console.WriteLine(person.fullt);
+
+    */
+
+            //Övning 3
+
+            ålder person = new ålder();
+
+            Console.Write("Ange ditt förnamn: ");
+            person.förnamn = Console.ReadLine();
+            Console.Write("Ange ditt efternamn: ");
+            person.efternamn = Console.ReadLine();
+            if (person.Birthdate)
+                Console.WriteLine("Du är du myndig");
+            else
+                Console.WriteLine("Du är omyndig");
+
+            Console.WriteLine(person.fullt);
+            //Övning4. 
+
+            int vikt, langd;
+            bool inBool;
+
+            do
+            {
+                Console.Write("Ange din vikt i kg ");
+                inBool = int.TryParse(Console.ReadLine(), out vikt);
+            } while (!inBool);
+
+            do
+            {
+                Console.Write("Ange din längd i cm ");
+                inBool = int.TryParse(Console.ReadLine(), out langd);
+            } while (!inBool);
+
+            Console.WriteLine("Ditt BMI är: " + person.Bmi);
+        }
+    }
+}
