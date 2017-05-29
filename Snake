@@ -1,0 +1,257 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Snake
+{
+    public partial class Snake : Form
+    {
+        //Lista för ormen
+        private List<SnakeCord> snake = new List<SnakeCord>();
+        //Lista för maten
+        private SnakeCord food_piece = new SnakeCord();
+        public int []obstaclesX = new int [10];
+        public int []obstaclesY = new int[10];
+
+        public Snake()
+        {
+            InitializeComponent();
+            //nollställer settings
+            new Settings();
+            gameTimer.Interval = 1000/Settings.Speed;
+            gameTimer.Tick += UpdateScreen;
+            gameTimer.Start();
+            StartGame();
+        }
+        
+        //nytt spel startas och settings nollställs
+        private void StartGame()
+        {
+            new Settings();
+            snake.Clear();
+            //orm ritare
+            SnakeCord head = new SnakeCord();
+            head.xPosition = 10;
+            head.yPosition = 5;
+            snake.Add(head);
+            pointlbl.Text = Settings.Score.ToString();
+            gameoverlbl.Text = "";
+            tryagainlbl.Text = "";
+            //kallar på metod för maten
+            GenerateFood();
+            Obstacles();
+            TidTagare.Start();
+            gameTimer.Interval = 1000 / Settings.Speed;
+            timerlbl.Text = "0";
+        }
+        
+        //Mat generator
+        private void GenerateFood()
+        {
+            int maxXPos = GameBox.Size.Width/Settings.Width;
+            int maxYPos = GameBox.Size.Height / Settings.Height;
+            Random slumpMat = new Random();
+            food_piece = new SnakeCord();
+            food_piece.xPosition = slumpMat.Next(0,maxXPos);
+            food_piece.yPosition = slumpMat.Next(0, maxYPos);
+        }
+
+        private void UpdateScreen(object sender , EventArgs e)
+        {
+            if (Settings.gameOver == true)
+            {
+                if (KeyListener.Pressed(Keys.Enter))
+                {
+                    StartGame();
+                }
+            }
+            else//kollar så att ifall man kör höger kan man inte svänga vänster och kollidera i sig själv
+            {
+                if (KeyListener.Pressed(Keys.Right) && Settings.direction != Direction.Left)
+                    Settings.direction = Direction.Right;
+                else if (KeyListener.Pressed(Keys.Left) && Settings.direction != Direction.Right)
+                    Settings.direction = Direction.Left;
+                else if (KeyListener.Pressed(Keys.Up) && Settings.direction != Direction.Down)
+                    Settings.direction = Direction.Up;
+                else if (KeyListener.Pressed(Keys.Down) && Settings.direction != Direction.Up)
+                    Settings.direction = Direction.Down;
+                MovePlayer();
+            }
+            GameBox.Invalidate();
+        }
+
+        private void GameBox_Paint(object sender, PaintEventArgs e)
+        {
+            Graphics canvas = e.Graphics;//hämtar grafik
+            if (Settings.gameOver != true)//kollar om det är gameover
+            {
+                SolidBrush blueBrush = new SolidBrush(Color.Blue);
+                SolidBrush redBrush = new SolidBrush(Color.Red);
+                SolidBrush greenBrush = new SolidBrush(Color.Green);
+                //ritar ormen
+                for (int i = 0; i < snake.Count; i++)
+                {
+                    canvas.FillRectangle(blueBrush, new Rectangle(snake[i].xPosition * Settings.Width,
+                        snake[i].yPosition * Settings.Height,
+                        Settings.Width, Settings.Height));
+                    //ritar mat
+                    canvas.FillRectangle(redBrush, new Rectangle(food_piece.xPosition * Settings.Width, food_piece.yPosition * Settings.Height
+                        , Settings.Width, Settings.Height));
+
+                    for (int k = 0; k < 10; k++)
+                    {
+                        canvas.FillRectangle(greenBrush, new Rectangle(obstaclesX[k] * Settings.Width,
+                             obstaclesY[k] * Settings.Height,
+                             Settings.Width, Settings.Height));
+                    }
+                }
+            }
+        }
+        //flyttar ormen
+        private void MovePlayer()
+        {
+            for(int i = snake.Count-1; i>=0; i--)
+            {
+                if(i==0)
+                {
+                    switch(Settings.direction)
+                    {
+                        case Direction.Right:
+                            snake[i].xPosition++;
+                            break;
+                        case Direction.Left:
+                            snake[i].xPosition--;
+                            break;
+                        case Direction.Up:
+                            snake[i].yPosition--;
+                            break;
+                        case Direction.Down:
+                            snake[i].yPosition++;
+                            break;
+                    }
+                    //max x o y positoner
+                    int MaxX = GameBox.Size.Width / Settings.Width;
+                    int MaxY = GameBox.Size.Height / Settings.Height;
+                    
+                    //kollar efter kollision vid kanter
+                    if (snake[i].xPosition < 0 || snake[i].yPosition < 0 || snake[i].xPosition >= MaxX || snake[i].yPosition >= MaxY)
+                        Die();
+
+                    //kollar efter kollision med kropp
+
+                        for (int j = 1; j < snake.Count; j++)
+                        {
+                            if (snake[i].xPosition == snake[j].xPosition && snake[i].yPosition == snake[j].yPosition)
+                            {
+                                Die();
+                            }
+                        }
+                    //kollar efter kollision med mat
+                    if (snake[0].xPosition == food_piece.xPosition && snake[0].yPosition == food_piece.yPosition)
+                    {
+                        Eat();
+                    }
+                    }
+                else
+                {
+                    snake[i].xPosition = snake[i - 1].xPosition;
+                    snake[i].yPosition = snake[i - 1].yPosition;
+                }
+                RandomHit();
+                Collision();
+            }
+        }
+
+        private void Snake_KeyDown(object sender, KeyEventArgs e)
+        {
+            KeyListener.ChangeState(e.KeyCode, true);
+        }
+
+        private void Snake_KeyUp(object sender, KeyEventArgs e)
+        {
+            KeyListener.ChangeState(e.KeyCode, false);
+        }
+
+        private void Eat()
+        {
+            SnakeCord food_piece = new SnakeCord();
+            food_piece.xPosition = snake[snake.Count - 1].xPosition;
+            food_piece.yPosition = snake[snake.Count - 1].yPosition;
+            snake.Add(food_piece);
+            GenerateFood();
+            Obstacles();
+            Settings.Score += Settings.Points;
+            pointlbl.Text = Settings.Score.ToString();
+            gameTimer.Interval = 1000 / Settings.Speed++;
+        }
+
+        private void Die()
+        {
+            Settings.gameOver = true;
+            gameoverlbl.Text = "Game over";
+            tryagainlbl.Text = "Press enter to try again";
+            TidTagare.Stop();
+        }
+        
+        private void TidTagare_Tick(object sender, EventArgs e)
+        {
+            Settings.Time++;
+            timerlbl.Text = Settings.Time.ToString();
+        }
+
+        private void RandomHit()
+        {
+          for (var i=0; i<snake.Count; i++)
+            {
+                if(snake[i].xPosition == food_piece.xPosition && snake[i].yPosition == food_piece.yPosition)
+                {
+                    GenerateFood();
+                    i = -1;
+                }
+            }
+        }
+
+        private void Obstacles()
+        {
+            int maxXPos = GameBox.Size.Width / Settings.Width;
+            int maxYPos = GameBox.Size.Height / Settings.Height;
+            Random slumpHinder = new Random();
+            for (var i = 0; i < obstaclesX.Length; i++)
+            {
+                obstaclesX[i] = slumpHinder.Next(0, maxXPos);
+                obstaclesY[i] = slumpHinder.Next(0, maxYPos);
+
+                if (obstaclesX[i] == food_piece.xPosition && obstaclesY[i] == food_piece.yPosition)
+                {
+                    obstaclesX[i] = slumpHinder.Next(0, maxXPos);
+                    obstaclesY[i] = slumpHinder.Next(0, maxYPos);
+                }
+                for (var k = 0; k < snake.Count; k++)
+                {
+                    if (obstaclesX[i] == snake[k].xPosition && obstaclesY[i] == snake[k].yPosition)
+                    {
+                        obstaclesX[i] = slumpHinder.Next(0, maxXPos);
+                        obstaclesY[i] = slumpHinder.Next(0, maxYPos);
+                    }
+                }
+            }
+        }
+
+        private void Collision()
+        {
+            for (var i = 0; i < obstaclesX.Length; i++)
+            {
+                if (snake[0].xPosition == obstaclesX[i] && snake[0].yPosition == obstaclesY[i])
+                {
+                    Die();
+                }
+            }
+        } 
+    }
+}
